@@ -1,0 +1,25 @@
+#grid {
+    font-size: 0px;
+}
+
+#grid .row .pixel {
+    background-color: white;
+    border-color: black;
+    display: inline-block;
+    margin-left: 0%;
+    margin-right: 0%;
+    height: 20px;
+    width: 20px;
+}
+
+#grid .row .pixel:hover {
+    background-color: gray;
+}
+
+#grid .row .pixel.filled {
+    background-color: black;
+}
+
+#clear-button {
+    font-size: large;
+}
