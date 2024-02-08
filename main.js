@@ -39,12 +39,41 @@ const initGrid = () => {
     }
 };
 
+const bars = document.getElementById("bars");
+let probability = [];
+
+const initBars = () => {
+    bars.innerHTML = "";
+    probability = [];
+    for(let i = 0; i < 10; i++) {
+        probability.push(0);
+        const label = document.createElement("label");
+        label.textContent = i;
+        const bar = document.createElement("progress");
+        bar.value = 0;
+        bar.max = 100;
+        label.appendChild(bar);
+        bars.appendChild(label);
+    }
+};
+
 window.onload = () => {
     initGrid();
+    initBars();
 };
 
 const clearButton = document.getElementById("clear-button");
 
-clearButton.onclick = () => {
-    initGrid();
-}
+clearButton.onclick = window.onload;
+
+const updateProbability = () => {
+    for(let i = 0; i < bars.children.length; i++) {
+        const label = bars.children[i];
+        const bar = label.children[0];
+        bar.value = probability[i] * 100;
+    }
+};
+
+const FPS = 60;
+
+setInterval(updateProbability, 1000 / FPS);
